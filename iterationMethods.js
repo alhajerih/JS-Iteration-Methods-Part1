@@ -1,5 +1,5 @@
 //You are given an array of numbers. Your task is to use iteration methods to filter and transform this array.
-/*
+
 const numbers = [10, 13, 20, 25, 38, 35, 40];
 //forEach
 numbers.forEach(number=> console.log(number)); 
@@ -13,15 +13,14 @@ console.log(sum)
 // reduce the maxNumber
 const maxNumber =numbers.reduce((currentMax,number)=>(number > currentMax ? number : currentMax));
 console.log(maxNumber)
-*//*****************************************************************
+/*****************************************************************
 Part 1: Filtering
 
 Write code to perform the following tasks using the filter method:
 1) Create a new array containing numbers that are greater than or equal to 25.
 2) Create a new array containing numbers that are divisible by 5.
 ******************************************************************/
-const numbers = [10, 13, 20, 25, 38, 35, 40];
-/*
+
 const greater = numbers.filter(number => number >=25)
 console.log(greater);
 const divisable =numbers.filter(number=>number%5===0)
@@ -35,7 +34,7 @@ Write code to perform the following tasks using the map method:
 
 3) Create a new array that contains each number squared.
 4) Create a new array that contains each number multiplied by 2.
-******************************************************************//*
+******************************************************************/
 const squared = numbers.map(number=>number*number);
 console.log(squared);
 const mul = numbers.map(number=>number*2);
@@ -66,9 +65,11 @@ Part 4: Extra not required 🌶️🌶️🌶️
  * - Accepts an array
  * - Logs every element of the array
  ************************************/
-const logger =numbers.forEach(number => console.log(number));
-
+ function logger(numbers) {
+    numbers.forEach(number => console.log(number));
+  }
   
+  logger(numbers);
 
 /*************************************
  * toCelsius(temperatures)
@@ -81,7 +82,7 @@ const logger =numbers.forEach(number => console.log(number));
  * The conversion is:
  *   C = (F - 32) * (5/9)
  ************************************/
-function toCelsius(temperatures) {
+ function toCelsius(temperatures) {
     return temperatures.map(fahrenheit => (fahrenheit - 32) * (5 / 9));
   }
   console.log(toCelsius([32, 68, 100]));
@@ -96,9 +97,8 @@ function toCelsius(temperatures) {
  ***************************************/
 const hottestDays = function (temperatures, threshhold){
     return temperatures.filter(temp=> temp> threshhold)
-
 }
-console.log(hottestDays([50,60,70,40],50))
+console.log(hottestDays([50,60,70,40],50));
 
 /******************************************
  * logHottestDays(temperatures, threshhold)
@@ -114,3 +114,10 @@ console.log(hottestDays([50,60,70,40],50))
  * hint: you can combine
  *       all previous functions
  *******************************************/
+function logHottestDays(temperatures, threshold) {
+    const hotDays = hottestDays(temperatures,threshold);
+    const hotDaysInCelsius = toCelsius(hotDays);
+    logger(hotDaysInCelsius);
+  }
+
+logHottestDays([60 ,100,40,65,10,80],60);
